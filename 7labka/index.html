@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна Робота #7: JavaScript, jQuery та Плагіни</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Лабораторна Робота #7: JavaScript, jQuery та Плагіни</h1>
+    </header>
+
+    <main>
+
+        <section class="ui-elements">
+            <h2>1. Елементи jQuery UI (Accordion та Datepicker)</h2>
+
+            <div id="accordion-container">
+                <h3>Секція 1: Що таке jQuery?</h3>
+                <div>
+                    <p>jQuery — це швидка, невелика, багатофункціональна бібліотека JavaScript. Вона значно спрощує
+                        навігацію, маніпуляції DOM, обробку подій та розробку AJAX.</p>
+                </div>
+                <h3>Секція 2: Що таке Плагіни?</h3>
+                <div>
+                    <p>Плагіни — це додаткові файли JavaScript, написані іншими розробниками, які розширюють функціонал
+                        jQuery, дозволяючи легко додавати складні елементи (слайдери, галереї, віджети) на сайт.</p>
+                </div>
+                <h3>Секція 3: CDN</h3>
+                <div>
+                    <p>CDN (Content Delivery Network) дозволяє підключати бібліотеки, такі як jQuery та jQuery UI,
+                        напряму з зовнішніх серверів, що часто прискорює завантаження та зменшує навантаження на ваш
+                        хостинг.</p>
+                </div>
+            </div>
+
+            <h3>Вибір дати (Datepicker)</h3>
+            <label for="datepicker">Оберіть дату:</label>
+            <input type="text" id="datepicker">
+        </section>
+
+        <hr>
+
+        <section class="carousel-section">
+            <h2>2. Популярний Плагін: Owl Carousel</h2>
+            <div class="owl-carousel owl-theme">
+
+                <div class="item">
+                    <img src="img/img1.jpg" alt="Зображення 1">
+                    <h4>Слайд 1 (Зображення)</h4>
+                </div>
+
+                <div class="item">
+                    <img src="img/img2.jpg" alt="Зображення 2">
+                    <h4>Слайд 2 (Зображення)</h4>
+                </div>
+
+                <div class="item">
+                    <img src="img/img3.jpg" alt="Зображення 3">
+                    <h4>Слайд 3 (Зображення)</h4>
+                </div>
+
+                <div class="item">
+                    <h4>Просто текст</h4>
+                    <p>Цей слайдер легко налаштовується за допомогою опцій в коді ініціалізації.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© Врублевська Катерина ПП-22</p>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            // A) Ініціалізація Accordion
+            $("#accordion-container").accordion({
+                heightStyle: "content",
+                collapsible: true
+            });
+
+            // B) Ініціалізація Datepicker
+            $("#datepicker").datepicker({
+                dateFormat: "dd/mm/yy",
+                showAnim: "slideDown"
+            });
+
+            // C) Ініціалізація Owl Carousel
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>
