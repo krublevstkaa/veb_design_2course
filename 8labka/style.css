@@ -1,0 +1,56 @@
+/* Власні стилі та перевизначення кольорів Bootstrap */
+
+:root {
+    --petfinder-primary: #04BFBF;
+    /* Бірюзовий колір */
+    --petfinder-dark: #039696;
+    /* Темніший відтінок для hover */
+    --bs-primary: var(--petfinder-primary);
+    /* Перевизначаємо змінну Bootstrap */
+}
+
+/* 1. Налаштування власних класів кнопок */
+.btn-custom-primary {
+    background-color: var(--petfinder-primary);
+    border-color: var(--petfinder-primary);
+    color: white;
+}
+
+.btn-custom-primary:hover {
+    background-color: var(--petfinder-dark);
+    border-color: var(--petfinder-dark);
+}
+
+.btn-outline-custom-primary {
+    color: var(--petfinder-primary);
+    border-color: var(--petfinder-primary);
+}
+
+.btn-outline-custom-primary:hover {
+    background-color: var(--petfinder-primary);
+    color: white;
+}
+
+.btn-custom-success {
+    /* Для форми підписки */
+    background-color: var(--petfinder-dark);
+    border-color: var(--petfinder-dark);
+    color: white;
+}
+
+.btn-custom-success:hover {
+    background-color: #037c7c;
+    border-color: #037c7c;
+}
+
+/* 2. Налаштування компонентів */
+
+/* Шапка модального вікна */
+.modal-header.bg-custom-primary {
+    background-color: var(--petfinder-primary) !important;
+}
+
+/* Колір посилань у навігації при наведенні */
+.nav-link.link-dark:hover {
+    color: var(--petfinder-primary) !important;
+}
