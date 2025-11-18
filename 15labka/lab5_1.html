@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 1. Символи (№4). Врублевська К., ПП-22 (ЛР №15)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №15. Завдання 1 (№4) (Врублевська К., ПП-22)</h1>
+    </header>
+    <div class="container">
+        <h2>Маніпуляції з окремими символами</h2>
+        <h3>Завдання: Підрахувати кількість 'C' та 'D' окремо, замінити '**' на ' '.</h3>
+        <div class="script-output" id="output">
+            <script>
+                "use strict";
+                // Початковий рядок для демонстрації
+                let str = "JS**is**the***best***language**Cfor**Dweb**development.**CThis**Dtask**has**C**C**D";
+                let html = '';
+
+                html += `<h4>Початковий рядок:</h4><p>${str}</p>`;
+
+                // --- ЧАСТИНА 1: Підрахунок 'C' та 'D' (регістрочутливий) ---
+
+                // Використовуємо глобальний пошук (g) для підрахунку
+                const countC = (str.match(/C/g) || []).length;
+                const countD = (str.match(/D/g) || []).length;
+
+                html += `<h4>1. Підрахунок символів 'C' та 'D'</h4>`;
+                html += `<p>Кількість 'C': <strong class="highlight">${countC}</strong></p>`;
+                html += `<p>Кількість 'D': <strong class="highlight">${countD}</strong></p>`;
+
+                // --- ЧАСТИНА 2: Заміна кожної пари символів '**' на символ ' ' ---
+
+                // Використовуємо регулярний вираз / \*\* /g для заміни всіх входжень
+                const newStr = str.replace(/\*\*/g, ' ');
+
+                html += `<h4>2. Заміна '**' на пробіл ' '</h4>`;
+                html += `<p>Рядок після заміни:</p><p class="highlight">${newStr}</p>`;
+
+                document.getElementById('output').innerHTML = html;
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

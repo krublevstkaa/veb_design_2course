@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 3. Шифрування Цезаря (+1). Врублевська К., ПП-22 (ЛР №15)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №15. Завдання 3 (Врублевська К., ПП-22)</h1>
+    </header>
+    <div class="container">
+        <h2>Найпростіше шифрування (Шифр Цезаря зі зсувом +1)</h2>
+        <h3>Програма кожну літеру замінює наступною за нею в алфавіті.</h3>
+        <div class="script-output" id="output">
+            <script>
+                "use strict";
+
+                // Алфавіт для української мови (від А до Я)
+                const ALPHABET_UA = "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ";
+
+                /**
+                 * Шифрує рядок, зсуваючи кожну літеру на 1 позицію вперед по алфавіту.
+                 */
+                function caesarEncryptPlusOne(text) {
+                    let result = "";
+                    const alphabetLength = ALPHABET_UA.length;
+
+                    for (let i = 0; i < text.length; i++) {
+                        let char = text[i];
+                        let isUpperCase = char === char.toUpperCase();
+                        let upperChar = char.toUpperCase();
+
+                        // Знаходимо індекс символу в алфавіті
+                        let index = ALPHABET_UA.indexOf(upperChar);
+
+                        if (index !== -1) {
+                            // Зсув на 1 позицію вперед (використовуємо % для циклічності 'Я' -> 'А')
+                            let newIndex = (index + 1) % alphabetLength;
+                            let newChar = ALPHABET_UA[newIndex];
+
+                            // Зберігаємо регістр
+                            result += isUpperCase ? newChar : newChar.toLowerCase();
+                        } else {
+                            // Не літери (пробіли, цифри, знаки) залишаємо без змін
+                            result += char;
+                        }
+                    }
+                    return result;
+                }
+
+                const originalMessage = "Це простий текст для шифрування. Група ПП-22.";
+                const encryptedMessage = caesarEncryptPlusOne(originalMessage);
+
+                let html = `<h4>Початкове повідомлення:</h4><p>${originalMessage}</p>`;
+                html += `<h4>Зашифроване повідомлення (+1 зсув):</h4><p class="highlight">${encryptedMessage}</p>`;
+
+                document.getElementById('output').innerHTML = html;
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

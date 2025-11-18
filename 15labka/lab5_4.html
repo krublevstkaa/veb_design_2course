@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 4. Шифрування слів (Перемішування). Врублевська К., ПП-22 (ЛР №15)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №15. Завдання 4 (Врублевська К., ПП-22)</h1>
+    </header>
+    <div class="container">
+        <h2>Програма шифрування: Перемішування букв у словах</h2>
+        <h3>Перемішує букви, крім першої та останньої, у кожному слові.</h3>
+        <div class="script-output" id="output">
+            <script>
+                "use strict";
+
+                /**
+                 Перемішує символи у рядку (вдосконалений алгоритм для уникнення кешування).
+                 Тепер сортування використовує Math.random() для гарантованого перемішування.
+                 */
+                function shuffleString(str) {
+                    if (str.length === 0) return str;
+                    // Перетворюємо рядок на масив, сортуємо його з випадковим порядком, і знову об'єднуємо.
+                    return str.split('').sort(() => Math.random() - 0.5).join('');
+                }
+
+                /*
+                 Шифрує слово, перемішуючи середні літери.
+                 */
+                function scrambleWord(word) {
+                    // Якщо слово занадто коротке (3 або менше літер), не чіпаємо його
+                    if (word.length <= 3) {
+                        return word;
+                    }
+
+                    const firstChar = word[0];
+                    const lastChar = word[word.length - 1];
+                    // Виділяємо середню частину
+                    const middle = word.substring(1, word.length - 1);
+
+                    const scrambledMiddle = shuffleString(middle);
+
+                    return firstChar + scrambledMiddle + lastChar;
+                }
+
+                /**
+                 * Обробляє рядок, застосовуючи функцію scrambleWord до кожного слова.
+                 */
+                function scrambleSentence(text) {
+                    // Регулярний вираз для пошуку слів (включає укр. літери та апострофи)
+                    const wordRegex = /([А-Яа-яA-Za-zІіЇїЄєҐґ']+)/g;
+
+                    // Замінюємо кожне знайдене слово на його перемішану версію
+                    return text.replace(wordRegex, scrambleWord);
+                }
+
+
+                // Використовуємо довший приклад
+                const originalSentence = "Це креативний та високотехнологічний спосіб шифрування. Перевіримо це.";
+                const encryptedSentence = scrambleSentence(originalSentence);
+
+                let html = `<h4>Початкове повідомлення:</h4><p>${originalSentence}</p>`;
+                html += `<h4>Зашифроване повідомлення (Перемішування середніх літер):</h4><p class="highlight">${encryptedSentence}</p>`;
+
+                document.getElementById('output').innerHTML = html;
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

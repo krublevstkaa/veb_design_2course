@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 2. Слова (№4). Врублевська К., ПП-22 (ЛР №15)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №15. Завдання 2 (№4) (Врублевська К., ПП-22)</h1>
+    </header>
+    <div class="container">
+        <h2>Маніпуляції зі словами та аналіз</h2>
+        <h3>Завдання: Перед першою літерою кожного слова вставити '*', визначити кількість слів без літери 'г'.</h3>
+        <div class="script-output" id="output">
+            <script>
+                "use strict";
+                // Початковий рядок
+                const originalStr = "Тут є багато слів для обробки, а також слово гігант і гора.";
+                let html = '';
+
+                html += `<h4>Початковий рядок:</h4><p>${originalStr}</p>`;
+
+                // Розбиваємо рядок на масив слів
+                const words = originalStr.split(/\s+/).filter(word => word.length > 0);
+
+                // --- ЧАСТИНА 1: Вставка '*' перед першою літерою ---
+                const modifiedWords = words.map(word => {
+                    return '*' + word;
+                });
+
+                const newStr = modifiedWords.join(' ');
+
+                html += `<h4>1. Рядок після вставки '*' перед кожним словом</h4>`;
+                html += `<p class="highlight">${newStr}</p>`;
+
+                // --- ЧАСТИНА 2: Кількість слів без літери 'г' (регістронезалежно) ---
+                let countWithoutG = 0;
+
+                words.forEach(word => {
+                    // Перевірка, чи слово не містить 'г' або 'Г'
+                    if (word.search(/г/i) === -1) {
+                        countWithoutG++;
+                    }
+                });
+
+                html += `<h4>2. Кількість слів без літери 'г'</h4>`;
+                html += `<p>Кількість слів без 'г': <strong class="highlight">${countWithoutG}</strong></p>`;
+
+                document.getElementById('output').innerHTML = html;
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
