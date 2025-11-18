@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 4. Робота з масивами рядків. Врублевська К., ПП-22 (ЛР №14)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №14. Завдання 4 (Врублевська К., ПП-22)</h1>
+    </header>
+    <div class="container">
+        <h2>Робота з масивами рядків та їх методами</h2>
+        <div class="script-output" id="output">
+            <script>
+                "use strict";
+                // Початкові масиви
+                let fruits = ['apple', 'pineapple', 'mango', 'melon', 'grape'];
+                const citrus = ['orange', 'lemon', 'lime'];
+                let output = document.getElementById('output');
+                let html = '<h4>Початкові дані:</h4>';
+
+                // 1. Вивести масив fruits
+                html += `<p>1. Масив fruits: [${fruits.join(', ')}]</p>`;
+
+                // 2. Вивести масив citrus
+                html += `<p>2. Масив citrus: [${citrus.join(', ')}]</p>`;
+
+                // 3. Об'єднаний масив fruits (використовуємо .concat)
+                const combinedFruits = fruits.concat(citrus);
+                html += `<p>3. Об'єднаний масив: [${combinedFruits.join(', ')}]</p>`;
+
+                // 4. Вставка елементів після 'mango' (використовуємо .splice)
+                const mangoIndex = fruits.indexOf('mango');
+                if (mangoIndex !== -1) {
+                    fruits.splice(mangoIndex + 1, 0, 'pear', 'cherry', 'plum', 'raspberry', 'strawberry');
+                }
+                html += `<p>4. Масив fruits після вставки: [${fruits.join(', ')}]</p>`;
+
+                // 5. Видалення останніх 3 елементів (використовуємо .splice)
+                fruits.splice(fruits.length - 3);
+                html += `<p>5. Масив fruits після видалення останніх 3: [${fruits.join(', ')}]</p>`;
+
+                // 6. Сортування в алфавітному порядку (за зростанням)
+                const sortedAlpha = [...fruits].sort();
+                html += `<p>6. Відсортований (алфавітний): <span class="highlight">[${sortedAlpha.join(', ')}]</span></p>`;
+
+                // 7. Сортування у зворотному алфавітному порядку (за спаданням)
+                const sortedReverse = [...sortedAlpha].reverse();
+                html += `<p>7. Відсортований (зворотний алфавітний): <span class="highlight">[${sortedReverse.join(', ')}]</span></p>`;
+
+                // 8. Сортування за довжиною слів
+                const sortedByLength = [...fruits].sort((a, b) => a.length - b.length);
+                html += `<p>8. Відсортований (за довжиною слів): <span class="highlight">[${sortedByLength.join(', ')}]</span></p>`;
+
+
+                output.innerHTML += html;
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

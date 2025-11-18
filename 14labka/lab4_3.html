@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 3. Обчислення (№4). Врублевська К., ПП-22 (ЛР №14)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №14. Завдання 3 (№4) (Врублевська К., ПП-22)</h1>
+    </header>
+    <div class="container">
+        <h2>Обробка масивів із використанням вбудованих методів</h2>
+        <h3>Завдання: Знайти кількість чисел, менших за задане X, і добуток усіх від’ємних чисел, що знаходяться на
+            непарних місцях.</h3>
+        <div class="script-output" id="output">
+            <script>
+                "use strict";
+                const ARR_LENGTH = 15;
+                const X = 0; // Задана межа X (якщо не вказано інше, нехай буде 0)
+                const arr = [];
+                let output = document.getElementById('output');
+                let html = '';
+
+                // 1. Формування масиву (випадкові числа від -100 до 100)
+                for (let i = 0; i < ARR_LENGTH; i++) {
+                    arr.push(Math.floor(Math.random() * 201) - 100);
+                }
+
+                html += `<h4>Початковий масив:</h4><p>[${arr.join(', ')}]</p>`;
+                html += `<h4>Параметри: X = ${X}</h4>`;
+
+                // --- ЧАСТИНА 1: Кількість чисел, менших за задане X ---
+                const countLessThanX = arr.filter(num => num < X).length;
+
+                html += `<h4>1. Кількість чисел, менших за ${X}</h4>`;
+                html += `<p>Кількість: <strong class="highlight">${countLessThanX}</strong></p>`;
+
+                // --- ЧАСТИНА 2: Добуток усіх від’ємних чисел, що стоять на непарних місцях ---
+                const negativeAtOddIndices = arr.filter((num, index) => {
+                    return index % 2 !== 0 && num < 0;
+                });
+
+                const product = negativeAtOddIndices.reduce((acc, num) => acc * num, 1);
+
+                html += `<h4>2. Добуток від'ємних чисел на непарних місцях</h4>`;
+
+                if (negativeAtOddIndices.length === 0) {
+                    html += `<p>Не знайдено від'ємних чисел на непарних місцях. Добуток: <strong class="highlight">1</strong></p>`;
+                } else {
+                    html += `<p>Числа, що брали участь у добутку: [${negativeAtOddIndices.join(', ')}]</p>`;
+                    html += `<p>Добуток: <strong class="highlight">${product}</strong></p>`;
+                }
+
+                output.innerHTML += html;
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

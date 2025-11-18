@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 1. Масиви. Врублевська К., ПП-22 (ЛР №14)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №14. Завдання 1 (Врублевська К., ПП-22)</h1>
+    </header>
+    <div class="container">
+        <h2>Створення, об'єднання та сортування числових масивів</h2>
+        <div class="script-output" id="output">
+            <h3>Результати операцій з масивами:</h3>
+            <script>
+                "use strict";
+                let output = document.getElementById('output');
+                let html = '<h4>1. Генерація масивів Treag та kvd (n=1..10)</h4>';
+
+                // 1. Створення масиву Treag (трикутних чисел)
+                const Treag = [];
+                for (let n = 1; n <= 10; n++) {
+                    Treag.push(n * (n + 1) / 2);
+                }
+                html += `<p><strong>Масив Treag:</strong> ${Treag.join('  ')}</p>`;
+
+                // 2. Створення масиву kvd (квадратів чисел)
+                const kvd = [];
+                for (let n = 1; n <= 10; n++) {
+                    kvd.push(n * n);
+                }
+                html += `<p><strong>Масив kvd:</strong> ${kvd.join(' ')}</p>`;
+
+                // 3. Об'єднання масивів у rez
+                const rez = Treag.concat(kvd);
+                html += '<h4>2. Об\'єднання та сортування</h4>';
+                html += `<p><strong>Об\'єднаний масив rez:</strong> ${rez.join(', ')}</p>`;
+
+                // 4. Сортування масиву rez у зворотному порядку
+                rez.sort((a, b) => b - a);
+                html += `<p class="highlight"><strong>Відсортований rez (зворотний порядок):</strong> ${rez.join(', ')}</p>`;
+
+                output.innerHTML += html;
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
