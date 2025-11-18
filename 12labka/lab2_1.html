@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 1. IF-ELSE-IF. Врублевська К., ПП-22 (ЛР №12)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №12. Завдання 1</h1>
+    </header>
+    <div class="container">
+        <h2>Оператор IF-ELSE-IF: Визначення мови за кодом</h2>
+        <p>Скрипт запитає код мови (ua, en, pl, de) і виведе її повну назву.</p>
+        <button onclick="checkLanguage()">Перевірити мову</button>
+        <div class="script-output" id="output">Натисніть кнопку для запуску скрипта.</div>
+
+        <script>
+            "use strict";
+
+            function checkLanguage() {
+                const lang = prompt("Введіть код мови (ua, en, pl, de):", "ua");
+                let resultText = "";
+
+                if (lang === null) {
+                    resultText = "Дія скасована.";
+                } else if (lang.toLowerCase() === "ua") {
+                    resultText = "Вибрано: Українська мова 🇺🇦";
+                } else if (lang.toLowerCase() === "en") {
+                    resultText = "Вибрано: English language 🇬🇧";
+                } else if (lang.toLowerCase() === "pl") {
+                    resultText = "Вибрано: Język polski 🇵🇱";
+                } else if (lang.toLowerCase() === "de") {
+                    resultText = "Вибрано: Deutsche Sprache 🇩🇪";
+                } else {
+                    resultText = "Мову невизначено. Спробуйте ua, en, pl або de.";
+                }
+
+                document.getElementById('output').innerHTML = `<h3>Результат</h3><p>${resultText}</p>`;
+            }
+        </script>
+    </div>
+</body>
+
+</html>

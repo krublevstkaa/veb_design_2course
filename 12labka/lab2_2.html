@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 2. IF та тернарний оператор. Врублевська К., ПП-22 (ЛР №12)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №12. Завдання 2</h1>
+    </header>
+    <div class="container">
+        <h2>Знаходження найменшого числа серед трьох</h2>
+        <p>Скрипт знаходить найменше з трьох чисел, використовуючи IF та тернарний оператор.</p>
+        <button onclick="findMinNumber()">Знайти найменше</button>
+        <div class="script-output" id="output">Натисніть кнопку для запуску скрипта.</div>
+
+        <script>
+            "use strict";
+
+            function findMinNumber() {
+                const num1 = parseFloat(prompt("Введіть перше число (A):", "15"));
+                const num2 = parseFloat(prompt("Введіть друге число (B):", "7"));
+                const num3 = parseFloat(prompt("Введіть третє число (C):", "23"));
+
+                if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+                    document.getElementById('output').innerHTML = "<h3>Помилка</h3><p>Введено некоректні дані.</p>";
+                    return;
+                }
+
+                let resultText = `Числа: A=${num1}, B=${num2}, C=${num3}<br>`;
+                let min_if;
+                let min_ternary;
+
+                // 1. Використання оператора IF
+                if (num1 <= num2 && num1 <= num3) {
+                    min_if = num1;
+                } else if (num2 <= num1 && num2 <= num3) {
+                    min_if = num2;
+                } else {
+                    min_if = num3;
+                }
+
+                // 2. Використання умовної (тернарної) операції
+                // (умова) ? значення_якщо_true : значення_якщо_false
+                min_ternary = (num1 < num2) ?
+                    ((num1 < num3) ? num1 : num3) : // якщо A < B
+                    ((num2 < num3) ? num2 : num3); // якщо B <= A
+
+                resultText += `<p><strong>Результат (IF):</strong> Найменше число: ${min_if}</p>`;
+                resultText += `<p><strong>Результат (Тернарний оператор):</strong> Найменше число: ${min_ternary}</p>`;
+
+                document.getElementById('output').innerHTML = `<h3>Результат обчислень</h3>${resultText}`;
+            }
+        </script>
+    </div>
+</body>
+
+</html>

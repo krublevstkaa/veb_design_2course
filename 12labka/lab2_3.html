@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 3. SWITCH. Врублевська К., ПП-22 (ЛР №12)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №12. Завдання 3</h1>
+    </header>
+    <div class="container">
+        <h2>Оператор SWITCH: Визначення дня тижня</h2>
+        <p>Введіть число від 1 (понеділок) до 7 (неділя), щоб дізнатися назву дня.</p>
+        <button onclick="checkDayOfWeek()">Визначити день</button>
+        <div class="script-output" id="output">Натисніть кнопку для запуску скрипта.</div>
+
+        <script>
+            "use strict";
+
+            function checkDayOfWeek() {
+                const dayNumber = parseInt(prompt("Введіть номер дня тижня (1-7):", "3"));
+                let dayName;
+
+                switch (dayNumber) {
+                    case 1:
+                        dayName = "Понеділок";
+                        break;
+                    case 2:
+                        dayName = "Вівторок";
+                        break;
+                    case 3:
+                        dayName = "Середа";
+                        break;
+                    case 4:
+                        dayName = "Четвер";
+                        break;
+                    case 5:
+                        dayName = "П'ятниця";
+                        break;
+                    case 6:
+                        dayName = "Субота";
+                        break;
+                    case 7:
+                        dayName = "Неділя";
+                        break;
+                    default:
+                        dayName = "Некоректний номер дня (має бути від 1 до 7)";
+                }
+
+                document.getElementById('output').innerHTML = `<h3>Результат</h3><p>Ви ввели: ${dayNumber}. Це <strong>${dayName}</strong>.</p>`;
+            }
+        </script>
+    </div>
+</body>
+
+</html>

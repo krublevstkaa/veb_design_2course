@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 5. FOR...IN. Врублевська К., ПП-22 (ЛР №12)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №12. Завдання 5</h1>
+    </header>
+    <div class="container">
+        <h2>Оператор циклу FOR...IN: Перебір властивостей об'єкта</h2>
+        <p>Скрипт перебирає властивості об'єкта "Інформація про Студента" та виводить їх у документі.</p>
+
+        <div class="script-output" id="output">
+            <h3>Інформація про Студента</h3>
+            <ul id="student-info">
+                <script>
+                    "use strict";
+
+                    const student = {
+                        "firstName": "Катерина",
+                        "lastName": "Врублевська",
+                        "group": "ПП-22",
+                        "course": 2,
+                        "specialty": "Програмне забезпечення"
+                    };
+
+                    let infoList = document.getElementById('student-info');
+                    let outputHTML = "";
+
+                    // Цикл for...in для перебору властивостей об'єкта student
+                    for (let key in student) {
+                        // key - це назва властивості (наприклад, "firstName")
+                        // student[key] - це значення властивості (наприклад, "Катерина")
+
+                        // Форматування назви ключа
+                        let formattedKey = key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1');
+
+                        outputHTML += `<li><strong>${formattedKey}:</strong> ${student[key]}</li>`;
+                    }
+
+                    infoList.innerHTML = outputHTML;
+                </script>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
