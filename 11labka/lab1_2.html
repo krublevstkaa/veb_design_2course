@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 2. Арифметичні вирази. Врублевська К., ПП-22 (ЛР №11)</title>
+</head>
+
+<body>
+
+    <h1>Лабораторна робота №11. Завдання 2. Обчислення арифметичних виразів</h1>
+    <p>Скрипт обчислить вираз **Y = (5a + 3b) / (2a - b)** за значеннями, які ви введете.</p>
+    <button onclick="runArithmeticCalculation()">Виконати обчислення</button>
+
+    <script>
+        "use strict";
+
+        function runArithmeticCalculation() {
+            const aStr = prompt("Введіть значення a:", "8");
+            const bStr = prompt("Введіть значення b:", "2");
+
+            const a = parseFloat(aStr);
+            const b = parseFloat(bStr);
+
+            if (isNaN(a) || isNaN(b)) {
+                alert("Помилка: Введено некоректні дані.");
+                return;
+            }
+
+            let numerator = 5 * a + 3 * b;
+            let denominator = 2 * a - b;
+
+            if (denominator === 0) {
+                alert("Помилка: Знаменник дорівнює нулю. Ділення неможливе.");
+                return;
+            }
+
+            let y = numerator / denominator;
+
+            alert(`a = ${a}, b = ${b}\nВираз Y = (${numerator}) / (${denominator})\nРезультат Y = ${y.toFixed(4)}`);
+        }
+    </script>
+
+</body>
+
+</html>

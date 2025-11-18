@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 3. Складні вирази з Math. Врублевська К., ПП-22 (ЛР №11)</title>
+</head>
+
+<body>
+
+    <h1>Лабораторна робота №11. Завдання 3. Обчислення складних арифметичних виразів</h1>
+    <p>Скрипт обчислить довжину діагоналі прямокутного паралелепіпеда **D = sqrt(a² + b² + c²)** та його об'єм.</p>
+    <button onclick="runMathCalculation()">Обчислити</button>
+
+    <script>
+        "use strict";
+
+        function runMathCalculation() {
+            const a = parseFloat(prompt("Введіть довжину (a):", "3"));
+            const b = parseFloat(prompt("Введіть ширину (b):", "4"));
+            const c = parseFloat(prompt("Введіть висоту (c):", "12"));
+
+            if (isNaN(a) || isNaN(b) || isNaN(c) || a <= 0 || b <= 0 || c <= 0) {
+                alert("Помилка: Введено некоректні дані. Всі розміри мають бути додатними числами.");
+                return;
+            }
+
+            // Обчислення діагоналі D за формулою D = sqrt(a² + b² + c²)
+            const diagonal = Math.sqrt(
+                Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2)
+            );
+
+            // Об'єм V = a * b * c
+            const volume = a * b * c;
+
+            // Виведення результату з округленням до 2 знаків
+            alert(`Вхідні дані:\na = ${a}, b = ${b}, c = ${c}\n\n` +
+                `Довжина діагоналі D = ${diagonal.toFixed(2)}\n` +
+                `Об'єм V = ${volume.toFixed(2)}`);
+        }
+    </script>
+
+</body>
+
+</html>

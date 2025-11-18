@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 1. Діалогові вікна. Врублевська К., ПП-22 (ЛР №11)</title>
+</head>
+
+<body>
+
+    <h1>Лабораторна робота №11. Завдання 1. Робота з діалоговими вікнами</h1>
+    <p>Скрипт запросить у вас два числа та запропонує вибрати арифметичну операцію (додавання або множення).</p>
+    <button onclick="runCustomDialog()">Запустити скрипт</button>
+
+    <script>
+        "use strict";
+
+        function runCustomDialog() {
+            const num1Str = prompt("Введіть перше число (x):", "10");
+            const num2Str = prompt("Введіть друге число (y):", "5");
+
+            const x = parseFloat(num1Str);
+            const y = parseFloat(num2Str);
+
+            if (isNaN(x) || isNaN(y)) {
+                alert("Помилка: Ви ввели некоректне число.");
+                return;
+            }
+
+            const shouldAdd = confirm("Натисніть 'OK' для додавання (x + y), або 'Скасувати' для множення (x * y).");
+
+            let result;
+            let operation;
+
+            if (shouldAdd) {
+                result = x + y;
+                operation = `${x} + ${y}`;
+            } else {
+                result = x * y;
+                operation = `${x} * ${y}`;
+            }
+
+            alert(`Вираз: ${operation} \nРезультат: ${result}`);
+        }
+    </script>
+
+</body>
+
+</html>

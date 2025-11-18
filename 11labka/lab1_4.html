@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 4. Динамічні сторінки. Врублевська К., ПП-22 (ЛР №11)</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px auto;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Лабораторна робота №11. Завдання 4. Формування динамічних сторінок</h1>
+    <p>Наступний вміст був доданий на сторінку за допомогою методу document.write().</p>
+    <hr>
+
+    <script>
+        "use strict";
+
+        // Виправлено номер роботи
+        const labName = "Лабораторна робота №11";
+        const studentName = "Врублевська Катерина";
+        const studentGroup = "ПП-22";
+        const theme = "Типи даних та оператори JavaScript";
+
+        // Починаємо формувати таблицю
+        document.write("<h2>Звіт про роботу (динамічно сформовано)</h2>");
+        document.write("<table>");
+
+        // Рядок 1: Назва роботи
+        document.write("<tr>");
+        document.write("<th>Назва роботи:</th>");
+        document.write("<td>" + labName + "</td>");
+        document.write("</tr>");
+
+        // Рядок 2: Тема
+        document.write("<tr>");
+        document.write("<th>Тема:</th>");
+        document.write("<td>" + theme + "</td>");
+        document.write("</tr>");
+
+        // Рядок 3: Виконавець
+        document.write("<tr>");
+        document.write("<th>Виконавець:</th>");
+        document.write("<td>" + studentName + "</td>");
+        document.write("</tr>");
+
+        // Рядок 4: Група
+        document.write("<tr>");
+        document.write("<th>Група:</th>");
+        document.write("<td>" + studentGroup + "</td>");
+        document.write("</tr>");
+
+        document.write("</table>");
+
+        document.write('<p style="color: green; font-weight: bold;">' +
+            'Успішне використання document.write для додавання структурованого контенту.' +
+            '</p>');
+
+    </script>
+
+</body>
+
+</html>
