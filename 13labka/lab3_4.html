@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 4. Функція з поверненням. Врублевська К., ПП-22 (ЛР №13)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №13. Завдання 4</h1>
+    </header>
+    <div class="container">
+        <h2>Користувацька функція (з поверненням): Генерація безпечного пароля</h2>
+        <p>Функція <code>generatePassword(length)</code> повертає випадковий рядок заданої довжини.</p>
+        <button onclick="runPasswordGenerator()">Згенерувати пароль</button>
+        <div class="script-output" id="output">Натисніть кнопку.</div>
+
+        <script>
+            "use strict";
+
+            function generatePassword(length) {
+                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+                let password = "";
+
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(Math.random() * chars.length);
+                    password += chars[randomIndex];
+                }
+
+                return password;
+            }
+
+            function runPasswordGenerator() {
+                const lenInput = prompt("Введіть бажану довжину пароля (наприклад, 12):", "12");
+                const length = parseInt(lenInput);
+
+                if (isNaN(length) || length < 8 || length > 30) {
+                    alert("Будь ласка, введіть число від 8 до 30.");
+                    return;
+                }
+
+                const newPassword = generatePassword(length);
+
+                const resultHTML = `
+                    <h3>Згенерований Пароль</h3>
+                    <p>Довжина: ${length}</p>
+                    <p>Пароль: <strong>${newPassword}</strong></p>
+                `;
+                document.getElementById('output').innerHTML = resultHTML;
+            }
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 5. Параметри за замовчуванням. Врублевська К., ПП-22 (ЛР №13)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №13. Завдання 5</h1>
+    </header>
+    <div class="container">
+        <h2>Функція з необов'язковими/типовими параметрами: Конфігурація системи сповіщень</h2>
+        <p>Функція <code>sendAlert(message, level, recipient)</code> використовує типові значення для рівня важливості
+            ('Info') та одержувача ('Система').</p>
+        <button onclick="runAlertDemo()">Запустити демо</button>
+        <div class="script-output" id="output">Натисніть кнопку.</div>
+
+        <script>
+            "use strict";
+            let logCount = 0;
+
+            function sendAlert(message, level = 'Info', recipient = 'Система') {
+                logCount++;
+                const timestamp = new Date().toLocaleTimeString('uk-UA');
+                return `${logCount}. [${timestamp}] [${level.toUpperCase()}] до ${recipient}: ${message}`;
+            }
+
+            function runAlertDemo() {
+                let resultHTML = `<h3>Результати сповіщень</h3>`;
+
+                // 1. Повний виклик (без значень за замовчуванням)
+                resultHTML += `<p><strong>Повний виклик:</strong> ${sendAlert("Критична помилка бази даних", "ERROR", "Адміністратор")}</p>`;
+
+                // 2. Виклик, коли відсутній рівень
+                resultHTML += `<p><strong>Відсутній рівень:</strong> ${sendAlert("Користувач успішно увійшов", undefined, "Журнал")}</p>`;
+
+                // 3. Виклик лише з повідомленням (обидва параметри за замовчуванням)
+                resultHTML += `<p><strong>Лише повідомлення:</strong> ${sendAlert("Звіт сформовано")}</p>`;
+
+                document.getElementById('output').innerHTML = resultHTML;
+            }
+        </script>
+    </div>
+</body>
+
+</html>

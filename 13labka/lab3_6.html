@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 6. Функція як аргумент. Врублевська К., ПП-22 (ЛР №13)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №13. Завдання 6</h1>
+    </header>
+    <div class="container">
+        <h2>Функція як аргумент (Callback): Фільтрація списку товарів</h2>
+        <p>Функція <code>processInventory(list, criteriaFunction)</code> фільтрує масив товарів, застосовуючи передану
+            функцію-критерій.</p>
+        <button onclick="runInventoryDemo()">Запустити фільтрацію</button>
+        <div class="script-output" id="output">Натисніть кнопку, щоб побачити результати.</div>
+
+        <script>
+            "use strict";
+
+            // ОНОВЛЕНИЙ СПИСОК ТОВАРІВ для різного виводу
+            const inventory = [
+                { name: "Кава 'Еспресо'", price: 150, stock: 5 },       // Low Stock & Premium
+                { name: "Чай 'Зелений'", price: 80, stock: 20 },        // Standard
+                { name: "Торт 'Наполеон'", price: 300, stock: 1 },      // Low Stock & Premium
+                { name: "Печиво 'Вівсяне'", price: 45, stock: 50 },     // Standard
+                { name: "Молоко 'Фермерське'", price: 55, stock: 2 },  // <-- Тільки Low Stock (ціна < 100)
+                { name: "Віскі 'Single Malt'", price: 500, stock: 15 }, // <-- Тільки Premium (залишок > 10)
+            ];
+
+            // Функція-Callback 1: Товари, яких залишилося менше 10
+            function isLowStock(item) {
+                return item.stock < 10;
+            }
+
+            // Функція-Callback 2: Товари, дорожчі за 100 грн
+            function isPremium(item) {
+                return item.price > 100;
+            }
+
+            /**
+             * Основна функція, яка приймає функцію-критерій (callback).
+             */
+            function processInventory(list, criteriaFunction) {
+                const filteredList = [];
+                for (const item of list) {
+                    if (criteriaFunction(item)) { // Виклик переданої функції
+                        filteredList.push(item);
+                    }
+                }
+                return filteredList;
+            }
+
+            function formatResult(list, title) {
+                let html = `<h4>${title} (${list.length} шт.):</h4><ul>`;
+                if (list.length === 0) {
+                    html += `<li>Список порожній.</li>`;
+                } else {
+                    for (const item of list) {
+                        html += `<li>${item.name} (Ціна: ${item.price} грн, Залишок: ${item.stock})</li>`;
+                    }
+                }
+                html += `</ul>`;
+                return html;
+            }
+
+
+            function runInventoryDemo() {
+                let resultHTML = `<h3>Складські звіти</h3>`;
+
+                // 1. Фільтрація за критерієм "Мало товару"
+                const lowStock = processInventory(inventory, isLowStock);
+                resultHTML += formatResult(lowStock, "Товари з низьким залишком (Критерій: stock < 10)");
+
+                // 2. Фільтрація за критерієм "Преміум"
+                const premium = processInventory(inventory, isPremium);
+                resultHTML += formatResult(premium, "Преміум товари (Критерій: price > 100)");
+
+                document.getElementById('output').innerHTML = resultHTML;
+            }
+        </script>
+    </div>
+</body>
+
+</html>

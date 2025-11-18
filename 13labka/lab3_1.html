@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 1. Вбудовані функції (Date). Врублевська К., ПП-22 (ЛР №13)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №13. Завдання 1</h1>
+    </header>
+    <div class="container">
+        <h2>Вбудовані функції: Стилізоване відображення днів тижня</h2>
+        <p>Використання функції <code>weekDay(day, size, color)</code> для динамічної стилізації тексту (згідно з
+            вимогою методички).</p>
+
+        <div class="script-output" id="output">
+            <h3>Дні тижня:</h3>
+            <script>
+                "use strict";
+                function weekDay(day, size, color) {
+                    const style = `font-size:${size}px; color:${color}; font-weight:bold;`;
+                    document.write(`<p style="${style}">${day}</p>`);
+                }
+                weekDay("Понеділок", 20, "blue");
+                weekDay("Вівторок", 18, "green");
+                weekDay("Середа", 24, "red");
+                weekDay("Четвер", 16, "var(--accent-color)");
+                weekDay("П'ятниця", 22, "var(--secondary-color)");
+                weekDay("Субота", 26, "purple");
+                weekDay("Неділя", 28, "orange");
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

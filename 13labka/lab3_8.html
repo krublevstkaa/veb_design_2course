@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 8. Масив arguments. Врублевська К., ПП-22 (ЛР №13)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №13. Завдання 8</h1>
+    </header>
+    <div class="container">
+        <h2>Масив arguments: Форматування довільної кількості тегів/міток</h2>
+        <p>Функція <code>formatTags()</code> приймає довільну кількість рядків і перетворює їх на форматований рядок
+            тегів.</p>
+        <button onclick="runTagsDemo()">Запустити демо</button>
+        <div class="script-output" id="output">Натисніть кнопку.</div>
+
+        <script>
+            "use strict";
+
+            function formatTags() {
+                let tagsHTML = "";
+
+                for (let i = 0; i < arguments.length; i++) {
+                    const tagText = String(arguments[i]).trim();
+
+                    if (tagText.length > 0) {
+                        tagsHTML += `<span style="display: inline-block; background: #e0f7fa; color: #007bff; padding: 5px 10px; margin: 3px; border-radius: 5px; font-size: 0.9em;">#${tagText}</span>`;
+                    }
+                }
+
+                if (arguments.length === 0) {
+                    return "<i>Теги не передано</i>";
+                }
+
+                return tagsHTML;
+            }
+
+            function runTagsDemo() {
+                const tags1 = formatTags("javascript", "functions", "lab13", 2024);
+                const tags2 = formatTags("frontend", "design", "css", "", "html5", "ukraine");
+
+                let resultHTML = `<h3>Результати форматування</h3>`;
+
+                resultHTML += `<p><strong>Приклад 1 (4 аргументи):</strong></p><p>${tags1}</p>`;
+                resultHTML += `<p><strong>Приклад 2 (6 аргументів з пропуском):</strong></p><p>${tags2}</p>`;
+
+                document.getElementById('output').innerHTML = resultHTML;
+            }
+        </script>
+    </div>
+</body>
+
+</html>

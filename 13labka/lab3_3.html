@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 3. Функція без повернення. Врублевська К., ПП-22 (ЛР №13)</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #id-card {
+            border: 2px solid var(--secondary-color);
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        #id-card p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №13. Завдання 3</h1>
+    </header>
+    <div class="container">
+        <h2>Користувацька функція (без повернення): Динамічне оновлення ID-карти</h2>
+        <p>Функція <code>updateIdCard(name, group, status)</code> приймає аргументи та оновлює вміст HTML-елемента.</p>
+        <button onclick="runIdUpdate()">Оновити дані ID</button>
+
+        <div id="id-card">
+            <h3>Студентський Квиток (ID)</h3>
+            <p>Прізвище, Ім'я: <strong id="card-name">...</strong></p>
+            <p>Група: <strong id="card-group">...</strong></p>
+            <p>Статус: <span id="card-status">...</span></p>
+        </div>
+
+        <script>
+            "use strict";
+            function updateIdCard(name, group, status) {
+                document.getElementById('card-name').textContent = name;
+                document.getElementById('card-group').textContent = group;
+                document.getElementById('card-status').textContent = status;
+
+                const statusElement = document.getElementById('card-status');
+                statusElement.style.color = status === "Активний" ? 'green' : 'red';
+            }
+
+            function runIdUpdate() {
+                const name = prompt("Введіть ПІБ:", "Врублевська Катерина");
+                const group = prompt("Введіть групу:", "ПП-22");
+                const status = confirm("Студент активний?") ? "Активний" : "Неактивний";
+                updateIdCard(name, group, status);
+            }
+
+            updateIdCard("Не введено", "Не введено", "Неактивний");
+        </script>
+    </div>
+</body>
+
+</html>

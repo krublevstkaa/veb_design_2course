@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Завдання 7. Функція як змінна. Врублевська К., ПП-22 (ЛР №13)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Лабораторна робота №13. Завдання 7</h1>
+    </header>
+    <div class="container">
+        <h2>Функція як змінна (Function Expression): Перевірка рядка на паліндром</h2>
+        <p>Функція <code>isPalindrome</code> оголошена як змінна і перевіряє, чи читається рядок однаково в обох
+            напрямках.</p>
+        <button onclick="runPalindromeCheck()">Перевірити слово</button>
+        <div class="script-output" id="output">Натисніть кнопку.</div>
+
+        <script>
+            "use strict";
+
+            // Оголошення функції як змінної (Function Expression)
+            const isPalindrome = function (text) {
+                if (typeof text !== 'string' || text.length === 0) {
+                    return false;
+                }
+
+                // Очищення тексту від пробілів та спецсимволів
+                const cleanText = text.replace(/[^а-яa-z0-9]/gi, '').toLowerCase();
+
+                // Перевертання рядка
+                const reversedText = cleanText.split('').reverse().join('');
+
+                return cleanText === reversedText;
+            };
+
+            function runPalindromeCheck() {
+                const word = prompt("Введіть слово або фразу для перевірки:", "Ротатор");
+
+                if (word === null || word.trim() === "") {
+                    document.getElementById('output').innerHTML = "<h3>Помилка</h3><p>Введено порожній рядок.</p>";
+                    return;
+                }
+
+                const result = isPalindrome(word);
+
+                const resultHTML = `
+                    <h3>Результат перевірки</h3>
+                    <p>Введене слово: <strong>${word}</strong></p>
+                    <p>Статус: Це <strong>${result ? 'ПАЛІНДРОМ' : 'НЕ паліндром'}</strong>.</p>
+                    <p style="font-size: 0.9em; color: gray;">(Приклад паліндрома: 'А роза впала на лапу Азора')</p>
+                `;
+                document.getElementById('output').innerHTML = resultHTML;
+            }
+        </script>
+    </div>
+</body>
+
+</html>
